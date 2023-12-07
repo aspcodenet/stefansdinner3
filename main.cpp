@@ -35,7 +35,7 @@ protected:
     int y;
 };
 
-class  : public GameObject {
+class  Human: public GameObject {
 public:
     Human(std::string name):name(name){
         }
