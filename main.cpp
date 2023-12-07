@@ -12,6 +12,14 @@
 // private are onlt accessible from the class itself
 // proteted are accessible from the class itself AND it derived classes
 
+// abstract classes . .- methods
+// add some game behaviour
+//      help with implementing LEVELLING 
+//  humans to have a level - starting at 0
+// add a mightLevelUp() function for all gameobejcts
+// call it in the loop
+// if a human burps three times in a row then level++
+
 class GameObject{
 public:    
 
@@ -22,13 +30,12 @@ public:
     virtual void act() {
         std::cout << "This is gameobject act "  << std::endl;
     }
-
 protected:
     int x;
     int y;
 };
 
-class Human : public GameObject {
+class  : public GameObject {
 public:
     Human(std::string name):name(name){
         }
@@ -59,6 +66,7 @@ private:
 int main(){
 
     auto h = Human("Stefan");
+    h.draw();
 
     srand((unsigned) time(NULL));
     std::vector<GameObject *> gameObjects;
@@ -69,7 +77,8 @@ int main(){
     
     while(true){ // gameloop
         for(auto actor: gameObjects){
-            actor->act();
+            actor->act(); // jmp != -> function  jmp to special fuinction -> RUNTIME check actual type anbd call SPECIALIZED function - overridden funktion
+            actor->draw();
         }
     }
 
