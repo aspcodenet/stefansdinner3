@@ -27,12 +27,25 @@ public:
         
     }
 
-    virtual void act() {
-        std::cout << "This is gameobject act "  << std::endl;
-    }
+    virtual void act() = 0;
+
+
+    // virtual void act() {
+    //     std::cout << "This is gameobject act "  << std::endl;
+    // }
 protected:
     int x;
     int y;
+};
+
+class Cat : public GameObject{
+    void act() override{
+        std::string actions[]={"ds","dfssdfa","adsdas"};
+        int index = rand()%3;        
+
+        std::cout << "CAT " << actions[index] << std::endl;
+    }
+
 };
 
 class  Human: public GameObject {
@@ -46,7 +59,8 @@ public:
         std::cout << name << " " << actions[index] << std::endl;
     }
 private:
-    std::string name;        
+    std::string name;      
+    int level = 1;  
 };
 
 class Fly : public GameObject{
@@ -65,6 +79,9 @@ private:
 
 int main(){
 
+    // GameObject obj;
+    // obj.act();
+
     auto h = Human("Stefan");
     h.draw();
 
@@ -79,6 +96,7 @@ int main(){
         for(auto actor: gameObjects){
             actor->act(); // jmp != -> function  jmp to special fuinction -> RUNTIME check actual type anbd call SPECIALIZED function - overridden funktion
             actor->draw();
+            actor->mightLevelUp();
         }
     }
 
